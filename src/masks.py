@@ -8,8 +8,8 @@ def get_mask_card_number(card):
         Исключения:
         ValueError - если длина карты не 16 символов или присутствуют нечисловые символы
         """
-    if not card.isdigit():
-        print('карта должна содержать только числа')
+    #if not card.isdigit():
+        #print('карта должна содержать только числа')
     if len(card) != 16:
         print('карта должна содержать 16 чисел')
     mask = f'{card[:4]} {card[4:6]}** **** {card[-4:]}'
@@ -26,8 +26,8 @@ def get_mask_account(card):
         Исключения:
         ValueError - если длина счета не 20 символов или присутствуют нечисловые символы
         """
-    if not card.isdigit():
-        print('карта должна содержать только числа')
+    #if not card.isdigit():
+        #print('карта должна содержать только числа')
     if len(card) != 20:
         print('карта должна содержать 20 чисел')
     mask = f'**{card[-4:]}'

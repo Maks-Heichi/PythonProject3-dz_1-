@@ -1,10 +1,4 @@
-def mask_card(card_number: str) -> str:
-    """Маскируем номер карты, оставляя последние 4 цифры и 4 цифры в начале"""
-    return card_number[:4] + ' ' + ' '.join(['**' for _ in range((len(card_number) - 8) // 4)]) + ' ' + card_number[-4:]
-
-def mask_account(account_number: str) -> str:
-    """Маскируем номер счета, оставляя последние 4 цифры"""
-    return '**' + account_number[-4:]
+from src.masks import get_mask_card_number, get_mask_account
 
 def mask_account_card(info: str) -> str:
     """Обрабатывает информацию о картах и счетах, возвращая замаскированный номер"""
@@ -13,9 +7,9 @@ def mask_account_card(info: str) -> str:
     number = parts[-1]
 
     if 'Счет' in card_type:
-        masked_number = mask_account(number)
+        masked_number = get_mask_account(number)
     else:
-        masked_number = mask_card(number)
+        masked_number = get_mask_card_number(number)
 
     return f"{card_type} {masked_number}"
 
@@ -28,4 +22,4 @@ def get_date(date_string: str) -> str:
 # Примеры работы функций
 print(mask_account_card("Visa Platinum 7000792289606361"))
 print(mask_account_card("Счет 73654108430135874305"))
-print(get_date("2024-03-11T02:26:18.671407"))
+print(get_date("2026-01-04T013:00:00.671407"))
