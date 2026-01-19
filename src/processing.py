@@ -26,6 +26,3 @@ def sort_by_date(transactions, descending=True):
 
 sorted_transactions = sort_by_date(transactions)
 print(sorted_transactions)
-
-sorted_transactions_asc = sort_by_date(transactions, descending=False)
-print(sorted_transactions_asc)
