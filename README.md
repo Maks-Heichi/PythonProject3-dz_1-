@@ -16,4 +16,8 @@
 Скопируйте репозиторий: https://github.com/Maks-Heichi/PythonProject3-dz_1-/pull/1
 Убедитесь что версия вашего PyCharm не ниже 3.14
 
-#### Добавлены тесты к каждой функий в папке "tests"
+#### Тестирование
+В папке "tests" добавлены тесты к функциям.
+В модуле tests_masks добавлены тесты к фунциям: "get_mask_card_number", "get_mask_account", через assert.
+В модуле tests_widget добавлены тесты к фунциям: "mask_account_card", "get_date", через параметизацию и assert.
+В модуле tests_processing добавлены тесты к фунциям: "filter_by_state", "sort_by_date", через фикстуры и assert.
