@@ -1,7 +1,7 @@
 from src.widget import mask_account_card, get_date
 import pytest
 
-@pytest.mark.parametrize(x, y [
+@pytest.mark.parametrize('x', 'y' [
     ('Visa Platinum 7000792289606361', 'Visa Platinum 7000 79** **** 6361')
     ('Счет 73654108430135874305','Счет **4305')
 ])
