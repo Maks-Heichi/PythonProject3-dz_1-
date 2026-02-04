@@ -96,13 +96,13 @@ if __name__ == "__main__":
 
     #Пример использования функции filter_by_currency
     usd_transactions = filter_by_currency(transactions, "USD")
-    for _ in range(2):
+    for i in range(2):
         print(next(usd_transactions))
 
 
     #Пример использования функции transaction_descriptions
     descriptions = transaction_descriptions(transactions)
-    for _ in range(5):
+    for i in range(5):
         print(next(descriptions))
 
 
