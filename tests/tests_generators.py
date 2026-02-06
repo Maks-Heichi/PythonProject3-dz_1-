@@ -258,7 +258,7 @@ def test_filter_by_currency(transactions_list):
 
 
 def test_transaction_descriptions(x, y):
-    assert generator_cards(x) == y
+    assert transaction_descriptions(x) == y
 
 
 @pytest.mark.parametrize("start, end, expected", [
