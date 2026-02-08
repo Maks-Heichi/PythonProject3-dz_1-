@@ -84,7 +84,7 @@ def transactions_list():
 
 
 def test_filter_by_currency(transactions_list):
-    transactions_usd = filter_by_currency(transactions_list, "USD")
+    transactions_usd = list(filter_by_currency(transactions_list, "USD"))
     assert transactions_usd == [
         {
             "id": 939719570,
@@ -133,7 +133,7 @@ def test_filter_by_currency(transactions_list):
         }
     ]
 
-    transactions_rub = filter_by_currency(transactions_list, "RUB")
+    transactions_rub = list(filter_by_currency(transactions_list, "RUB"))
     assert transactions_rub == [
         {
             "id": 873106923,
@@ -258,7 +258,7 @@ def test_filter_by_currency(transactions_list):
 
 
 def test_transaction_descriptions(x, y):
-    assert transaction_descriptions(x) == y
+    assert next(transaction_descriptions(x)) == y
 
 
 @pytest.mark.parametrize("start, end, expected", [
