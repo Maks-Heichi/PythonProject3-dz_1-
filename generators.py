@@ -8,7 +8,7 @@ def filter_by_currency(transactions: List[Dict[str, Optional[str]]], currency: s
 def transaction_descriptions(transactions: List[Dict[str, Optional[str]]]):
     """Генератор, выдающий описания транзакций по очереди"""
     for transaction in transactions:
-        yield transaction.get('description', 'Описание отсутствует')
+        yield transaction('description', 'Описание отсутствует')
 
 
 #Пример входных данных для проверки функций "filter_by_currency" и "transaction_descriptions"
