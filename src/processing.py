@@ -1,5 +1,5 @@
 # Примеры
-transactions_list: List[Dict[str, Optional[str]]] = [
+transactions_list: list[dict[str, Optional[str]]] = [
     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
     {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
     {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'},
@@ -8,7 +8,7 @@ transactions_list: List[Dict[str, Optional[str]]] = [
 
 
 # Функция filter_by_state
-def filter_by_state(transactions: List[Dict[str, Optional[str]]], state: str = 'EXECUTED') -> List[Dict[str, Optional[str]]]:
+def filter_by_state(transactions: list[dict[str, Optional[str]]], state: str = 'EXECUTED') -> List[Dict[str, Optional[str]]]:
     """Фильтрует список транзакций по значению ключа state."""
     return [transaction for transaction in transactions if transaction.get('state') == state]
 
@@ -20,9 +20,9 @@ print(canceled_transactions)
 
 
 # Функции sort_by_date
-def sort_by_date(transactions: List[Dict[str, Optional[str]]], descending: bool = True) -> List[Dict[str, Optional[str]]]:
+def sort_by_date(transactions: list[dict[str, Optional[str]]], reverse = False) -> List[Dict[str, Optional[str]]]:
     """Сортирует список транзакций по дате."""
-    return sorted(transactions, key=lambda x: x['date'], reverse=descending)
+    return sorted(transactions, key=lambda x: x['date'], reverse=reverse)
 
 sorted_transactions = sort_by_date(transactions_list)
 print(sorted_transactions)
