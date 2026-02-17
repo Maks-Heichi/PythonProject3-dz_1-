@@ -1,6 +1,7 @@
 import os
 import requests
 from dotenv import load_dotenv
+from typing import List, Dict, Any
 
 
 load_dotenv('.env')
