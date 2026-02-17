@@ -1,8 +1,6 @@
 from tempfile import NamedTemporaryFile
-
 import pytest
-
-from decorators import log
+from src.decorators import log
 
 
 def test_log_success():
