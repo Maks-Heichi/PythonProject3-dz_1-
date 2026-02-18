@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 from dotenv import load_dotenv
 from typing import List, Dict, Any
 
@@ -13,7 +14,7 @@ def convert_to_rub(amount: float, currency: str) -> float:
     if currency == 'RUB':
         return amount  #Если валюта уже в рублях, просто возвращаем сумму
 
-    url = f"https://api.apilayer.com/exchangerates_data/latest?base={currency}&symbols=RUB"
+    url = f"https://api.apilayer.com/exchangerates_data/latest/convert?base={currency}&symbols=RUB"
     headers = {'apikey': API_KEY}
     response = requests.get(url, headers=headers)
 
