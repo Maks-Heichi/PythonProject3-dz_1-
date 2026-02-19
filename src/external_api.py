@@ -1,23 +1,24 @@
-import os
-import requests
 import json
-from dotenv import load_dotenv
+import os
 from typing import Dict
 
-load_dotenv('.env')
-API_KEY = os.getenv('API_KEY')
+import requests
+from dotenv import load_dotenv
+
+load_dotenv(".env")
+API_KEY = os.getenv("API_KEY")
 
 
 def convert_to_rub(transaction: Dict[str, float]) -> float:
     """Конвертирует сумму в другую валюту в рубли."""
-    amount = transaction['amount']
-    currency = transaction['currency']
+    amount = transaction["amount"]
+    currency = transaction["currency"]
 
-    if currency == 'RUB':
+    if currency == "RUB":
         return amount  # Если валюта уже в рублях, просто возвращаем сумму
 
     url = f"https://api.apilayer.com/exchangerates_data/convert?base={currency}&symbols=RUB"
-    headers = {'apikey': API_KEY}
+    headers = {"apikey": API_KEY}
     response = requests.get(url, headers=headers)
 
     # Проверяем успешность запроса
@@ -27,13 +28,13 @@ def convert_to_rub(transaction: Dict[str, float]) -> float:
         raise Exception("Error fetching exchange rates")
 
     # Извлекаем курс рубля из ответа
-    rate = response.json()['rates']['RUB']
+    rate = response.json()["rates"]["RUB"]
     return amount * rate  # Возвращаем конвертированную сумму
 
 
 # Примеры транзакций
-transaction_usd = {'amount': 100, 'currency': 'USD'}
-transaction_eur = {'amount': 100, 'currency': 'EUR'}
+transaction_usd = {"amount": 100, "currency": "USD"}
+transaction_eur = {"amount": 100, "currency": "EUR"}
 
 try:
     # Конвертация и вывод результата для USD
