@@ -7,7 +7,7 @@ from typing import List, Dict, Any
 def load_transactions(operations: str) -> List[Dict[str, Any]]:
     """Загружает транзакции из JSON-файла."""
     try:
-        with open(operations.json, 'r', encoding="UTF-8",) as file:
+        with open(operations, 'r', encoding="UTF-8",) as file:
             data = json.load(file)
             if isinstance(data, list):
                 return data
