@@ -1,5 +1,7 @@
 from tempfile import NamedTemporaryFile
+
 import pytest
+
 from src.decorators import log
 
 
