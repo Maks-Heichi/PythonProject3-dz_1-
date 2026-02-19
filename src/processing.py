@@ -1,3 +1,5 @@
+from typing import Any, Dict, Iterator, List, Optional
+
 # Примеры
 transactions_list: List[Dict[str, Optional[str]]] = [
     {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
