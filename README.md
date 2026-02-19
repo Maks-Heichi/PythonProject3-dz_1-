@@ -11,3 +11,13 @@
 [{'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}]
 `def sort_by_date(transactions, descending=True)` - сортировка по дате. Пример:  [{'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'}, {'id': 615064591, 'state': 'CANCELED', 'date': '2018-10-14T08:21:33.419441'}, 
 {'id': 594226727, 'state': 'CANCELED', 'date': '2018-09-12T21:27:25.241689'}, {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'}]
+
+### Установка
+Скопируйте репозиторий: https://github.com/Maks-Heichi/PythonProject3-dz_1-/pull/1
+Убедитесь что версия вашего PyCharm не ниже 3.14
+
+#### Тестирование
+В папке "tests" добавлены тесты к функциям.
+В модуле tests_masks добавлены тесты к фунциям: "get_mask_card_number", "get_mask_account", через assert.
+В модуле tests_widget добавлены тесты к фунциям: "mask_account_card", "get_date", через параметизацию и assert.
+В модуле tests_processing добавлены тесты к фунциям: "filter_by_state", "sort_by_date", через фикстуры и assert.
