@@ -1,6 +1,5 @@
 import json
 import os
-from typing import Dict
 
 import requests
 from dotenv import load_dotenv
@@ -14,29 +13,40 @@ def convert_to_rub(amount: float, currency: str) -> float:
     if currency == "RUB":
         return amount  # Если валюта уже в рублях, просто возвращаем сумму
 
-    url = f"https://api.apilayer.com/exchangerates_data/convert?base={currency}&symbols=RUB"
+    url = f"https://api.apilayer.com/exchangerates_data/convert?to=RUB&from={currency}&amount={amount}"
     headers = {"apikey": API_KEY}
     response = requests.get(url, headers=headers)
 
-    # Проверяем успешность запроса
     if response.status_code != 200:
-        print(f"Код статуса ответа: {response.status_code}")
-        print(f"Содержимое ответа: {response.text}")
         raise Exception("Ошибка при получении курсов валют")
 
-    # Извлекаем курс рубля из ответа
-    rate = response.json()["rates"]["RUB"]
-    return amount * rate  # Возвращаем конвертированную сумму
+    converted_amount = response.json()["result"]
+    return converted_amount  # Возвращаем конвертированную сумму
 
 
-# Примеры транзакций
-try:
-    # Конвертация и вывод результата для USD
-    amount_in_rub_usd = convert_to_rub(transaction_usd)
-    print(f"Транзакция в размере 100 USD составляет: {amount_in_rub_usd:.2f} рублей")
+def load_transactions(file_path: str):
+    """Загружает транзакции из JSON-файла."""
+    with open(file_path, "r", encoding="UTF-8") as file:
+        return json.load(file)
+    return None
 
-    # Конвертация и вывод результата для EUR
-    amount_in_rub_eur = convert_to_rub(transaction_eur)
-    print(f"Транзакция в размере 100 EUR составляет: {amount_in_rub_eur:.2f} рублей")
-except Exception as e:
-    print(f"Error: {e}")  # Обработка ошибок
+
+def process_transaction(transaction):
+    """Конвертирует сумму транзакции в рубли."""
+    amount = transaction["amount"]
+    currency = transaction["currency"]
+    return convert_to_rub(amount, currency)
+
+
+if __name__ == "__main__":
+    try:
+        transactions = load_transactions("operations.json")
+
+        for transaction in transactions:
+            amount_in_rub = process_transaction(transaction)
+            print(
+                f"Транзакция в размере {transaction['amount']} {transaction['currency']} составляет: {amount_in_rub:.2f} рублей"
+            )
+
+    except Exception as e:
+        print(f"Error: {e}")  # Обработка ошибок

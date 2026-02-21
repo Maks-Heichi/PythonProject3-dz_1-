@@ -19,7 +19,7 @@ def get_mask_card_number(card):
     ValueError - если длина карты не 16 символов или присутствуют нечисловые символы
     """
     if not card.isdigit():
-        error_msg_numbers = f"Карта должна содержать только числа"
+        error_msg_numbers = "Карта должна содержать только числа"
         logger.error(error_msg_numbers)
         raise ValueError(error_msg_numbers)
     if len(card) != 16:
@@ -41,7 +41,7 @@ def get_mask_account(card):
     ValueError - если длина счета не 20 символов или присутствуют нечисловые символы
     """
     if not card.isdigit():
-        error_msg_numbers = f"Счет должен содержать только числа"
+        error_msg_numbers = "Счет должен содержать только числа"
         logger.error(error_msg_numbers)
         raise ValueError(error_msg_numbers)
     if len(card) != 20:
