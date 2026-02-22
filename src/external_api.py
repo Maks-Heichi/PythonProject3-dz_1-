@@ -26,8 +26,12 @@ def convert_to_rub(amount: float, currency: str) -> float:
 
 def load_transactions(file_path: str):
     """Загружает транзакции из JSON-файла."""
-    with open(file_path, "r", encoding="UTF-8") as file:
-        return json.load(file)
+    try:
+        with open(file_path, "r", encoding="UTF-8") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        print(f"Ошибка: Файл не найден по пути {file_path}")
+        raise
 
 
 def process_transaction(transaction):
@@ -39,12 +43,14 @@ def process_transaction(transaction):
 
 if __name__ == "__main__":
     try:
-        transactions = load_transactions("operations.json")
+        file_path = os.path.join("data", "operations.json")
+        transactions = load_transactions(file_path)
 
         for transaction in transactions:
             amount_in_rub = process_transaction(transaction)
             print(
-                f"Транзакция в размере {transaction['operationAmount']['amount']} {transaction['operationAmount']['currency']['code']} составляет: {amount_in_rub:.2f} рублей"
+                f"Транзакция в размере {transaction['operationAmount']['amount']} "
+                f"{transaction['operationAmount']['currency']['code']} составляет: {amount_in_rub:.2f} рублей"
             )
 
     except Exception as e:
