@@ -28,13 +28,12 @@ def load_transactions(file_path: str):
     """Загружает транзакции из JSON-файла."""
     with open(file_path, "r", encoding="UTF-8") as file:
         return json.load(file)
-    return None
 
 
 def process_transaction(transaction):
     """Конвертирует сумму транзакции в рубли."""
-    amount = transaction["amount"]
-    currency = transaction["currency"]
+    amount = float(transaction["operationAmount"]["amount"])
+    currency = transaction["operationAmount"]["currency"]["code"]
     return convert_to_rub(amount, currency)
 
 
@@ -45,7 +44,7 @@ if __name__ == "__main__":
         for transaction in transactions:
             amount_in_rub = process_transaction(transaction)
             print(
-                f"Транзакция в размере {transaction['amount']} {transaction['currency']} составляет: {amount_in_rub:.2f} рублей"
+                f"Транзакция в размере {transaction['operationAmount']['amount']} {transaction['operationAmount']['currency']['code']} составляет: {amount_in_rub:.2f} рублей"
             )
 
     except Exception as e:
