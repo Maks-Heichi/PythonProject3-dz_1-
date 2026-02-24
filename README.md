@@ -25,3 +25,7 @@
 
 ##### Тестирование
 Для запуска тестов используется библиотека `pytest`.
+
+###### Считывания финансовых операций из CSV и Excel
+- finance_operations_csv.py считывает финансовые операции из файлов CSV, так же написаны тесты к нему в папке tests\test_finance_operations_csv.py
+- finance_operations_exl.py считывает финансовые операции из файлов Excel, так же написаны тесты к нему в папке tests\test_finance_operations_exl.py
