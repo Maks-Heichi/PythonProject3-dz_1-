@@ -1,8 +1,7 @@
 import csv
 import unittest
-
+from typing import Dict, List
 from unittest.mock import mock_open, patch
-from typing import List, Dict
 
 from src.finance_operations_csv import read_transactions_from_csv
 
@@ -16,7 +15,7 @@ class TestReadTransactionsFromCsv(unittest.TestCase):
 
         expected = [
             {"id": "1", "amount": "100", "date": "2023-01-01"},
-            {"id": "2", "amount": "200", "date": "2023-01-02"}
+            {"id": "2", "amount": "200", "date": "2023-01-02"},
         ]
 
         self.assertEqual(result, expected)
