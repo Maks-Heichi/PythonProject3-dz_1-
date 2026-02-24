@@ -1,4 +1,4 @@
-from typing import Any, Dict, Iterator, List, Optional
+from typing import Dict, List, Optional
 
 # Примеры
 transactions_list: List[Dict[str, Optional[str]]] = [
