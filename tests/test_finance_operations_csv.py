@@ -1,6 +1,4 @@
-import csv
 import unittest
-from typing import Dict, List
 from unittest.mock import mock_open, patch
 
 from src.finance_operations_csv import read_transactions_from_csv
