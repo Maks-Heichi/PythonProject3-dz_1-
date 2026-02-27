@@ -52,12 +52,6 @@ def get_mask_account(card):
     return mask
 
 
-try:
-    raise Exception("Тестовая ошибка")
-except Exception as e:
-    logging.error("Произошла ошибка: %s", e)
-
-
-if __name__ == '__main__':
-    print(get_mask_card_number('7000792289606361'))
-    print(get_mask_account('73654108430135874305'))
+if __name__ == "__main__":
+    print(get_mask_card_number("7000792289606361"))
+    print(get_mask_account("73654108430135874305"))

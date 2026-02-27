@@ -12,7 +12,8 @@ def read_transactions_from_csv(file_path: str, delimiter: str = ",") -> List[Dic
     return transactions
 
 
-# Пример использования функции
-csv_transactions = read_transactions_from_csv("transactions.csv", delimiter=";")  # Укажите нужный разделитель
-for transaction in csv_transactions:
-    print(transaction)
+if __name__ == "__main__":
+    # Пример использования функции
+    csv_transactions = read_transactions_from_csv("transactions.csv", delimiter=";")  # Укажите нужный разделитель
+    for transaction in csv_transactions:
+        print(transaction)
